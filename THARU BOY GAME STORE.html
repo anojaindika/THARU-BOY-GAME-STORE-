@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THARU BOY GAME STORE | Ultimate Gaming Marketplace</title>
+  <meta name="description" content="Discover, explore, and download top-tier PC, Android, Online, and Offline games at THARU BOY GAME STORE. Created by MR. THARU BOY.">
+  <meta name="keywords" content="Game Store, Android Games, PC Games, MR. THARU BOY, Action Games, Offline Games">
+  <meta name="author" content="MR. THARU BOY">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              neon: '#00ff66',
+              cyan: '#00f0ff',
+              purple: '#7928ca',
+              dark: '#0a0d14',
+              card: '#121722',
+              glass: 'rgba(18, 23, 34, 0.75)'
+            }
+          },
+          boxShadow: {
+            'neon-green': '0 0 20px rgba(0, 255, 102, 0.35)',
+            'neon-cyan': '0 0 20px rgba(0, 240, 255, 0.35)',
+            'glow': '0 0 25px rgba(34, 197, 94, 0.25)'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Orbitron', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Custom Scrollbar & Utility Animations */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0d14;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f293d;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #22c55e;
+    }
+
+    .glass-panel {
+      background: rgba(18, 23, 34, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .neon-border {
+      position: relative;
+    }
+    .neon-border::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      background: linear-gradient(45deg, #00ff66, #00f0ff, #7928ca);
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .neon-border:hover::after {
+      opacity: 1;
+    }
+
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.03); }
+    }
+    .pulse-animation {
+      animation: pulse-subtle 3s infinite ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-[#0a0d14] text-gray-100 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-black">
+
+  <!-- ================= HEADER & NAVIGATION ================= -->
+  <header class="sticky top-0 z-40 glass-panel border-b border-gray-800/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo / Brand Name -->
+        <a href="#" onclick="showSection('home')" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-600 via-emerald-400 to-cyan-400 p-[2px] shadow-neon-green transition-transform duration-300 group-hover:scale-105">
+            <div class="w-full h-full bg-[#0a0d14] rounded-[10px] flex items-center justify-center">
+              <i class="fa-solid font-black text-brand-neon text-2xl fa-gamepad"></i>
+            </div>
+          </div>
+          <div>
+            <span class="font-heading font-black text-xl sm:text-2xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-brand-neon block">
+              THARU BOY
+            </span>
+            <span class="text-[10px] tracking-[0.25em] text-cyan-400 font-bold block uppercase -mt-1">
+              GAME STORE
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-300">
+          <a href="#home" onclick="showSection('home')" class="hover:text-brand-neon transition-colors py-1 border-b-2 border-transparent hover:border-brand-neon">Home</a>
+          <a href="#featured" onclick="scrollToId('featured-section')" class="hover:text-brand-neon transition-colors py-1">Featured</a>
+          <a href="#categories" onclick="scrollToId('categories-section')" class="hover:text-brand-neon transition-colors py-1">Categories</a>
+          <a href="#all-games" onclick="scrollToId('all-games-section')" class="hover:text-brand-neon transition-colors py-1">All Games</a>
+          <a href="#about" onclick="showSection('about')" class="hover:text-brand-neon transition-colors py-1">About</a>
+          <a href="#contact" onclick="showSection('contact')" class="hover:text-brand-neon transition-colors py-1">Contact</a>
+        </nav>
+
+        <!-- Quick Search & Support CTA -->
+        <div class="hidden lg:flex items-center gap-4">
+          <div class="relative w-64">
+            <input type="text" id="nav-search-input" placeholder="Search 100k+ games..." 
+              class="w-full bg-gray-900/90 text-sm text-gray-200 rounded-full pl-10 pr-4 py-2 border border-gray-700/60 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-2.5 text-gray-400 text-sm"></i>
+          </div>
+          <a href="https://wa.me/94773089283?text=Hello%20MR.%20THARU%20BOY%2C%20I%20came%20from%20your%20Game%20Store%20website%20and%20I%20need%20help." 
+             target="_blank" 
+             class="px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-bold text-xs flex items-center gap-2 shadow-lg hover:shadow-neon-green transition-all duration-300">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Support
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800/60 focus:outline-none">
+          <i class="fa-solid fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+      <div class="relative mb-3">
+        <input type="text" id="mobile-search-input" placeholder="Search games..." 
+          class="w-full bg-gray-900 text-sm text-gray-200 rounded-lg pl-9 pr-4 py-2 border border-gray-700 focus:outline-none focus:border-brand-500">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400 text-xs"></i>
+      </div>
+      <a href="#home" onclick="showSection('home'); toggleMobileMenu();" class="block px-3 py-2 rounded-md font-medium text-gray-200 hover:bg-gray-800 hover:text-brand-neon">Home</a>
+      <a href="#featured" onclick="scrollToId('featured-section'); toggleMobileMenu();" class="block px-3 py-2 rounded-md font-medium text-gray-200 hover:bg-gray-800 hover:text-brand-neon">Featured Games</a>
+      <a href="#categories" onclick="scrollToId('categories-section'); toggleMobileMenu();" class="block px-3 py-2 rounded-md font-medium text-gray-200 hover:bg-gray-800 hover:text-brand-neon">Categories</a>
+      <a href="#all-games" onclick="scrollToId('all-games-section'); toggleMobileMenu();" class="block px-3 py-2 rounded-md font-medium text-gray-200 hover:bg-gray-800 hover:text-brand-neon">All Games</a>
+      <a href="#about" onclick="showSection('about'); toggleMobileMenu();" class="block px-3 py-2 rounded-md font-medium text-gray-200 hover:bg-gray-800 hover:text-brand-neon">About Us</a>
+      <a href="#contact" onclick="showSection('contact'); toggleMobileMenu();" class="block px-3 py-2 rounded-md font-medium text-gray-200 hover:bg-gray-800 hover:text-brand-neon">Contact</a>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTAINER ================= -->
+  <main class="flex-grow">
+
+    <!-- HOME VIEW SECTION -->
+    <div id="view-home" class="space-y-16 py-6">
+      
+      <!-- HERO BANNER SECTION -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative rounded-3xl overflow-hidden glass-panel border border-brand-500/20 p-8 sm:p-12 md:p-16 bg-gradient-to-r from-gray-950 via-brand-card to-gray-950">
+          <div class="absolute -right-20 -top-20 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="relative z-10 max-w-2xl space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-neon text-xs font-semibold tracking-wide">
+              <i class="fa-solid fa-bolt"></i> 100,000+ GAMES AVAILABLE READY TO DOWNLOAD
+            </div>
+            
+            <h1 class="font-heading font-black text-3xl sm:text-5xl md:text-6xl tracking-wide leading-tight text-white">
+              EXPLORE THE NEXT GEN <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon via-emerald-400 to-cyan-400">GAMING REALM</span>
+            </h1>
+
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              Welcome to <span class="text-white font-bold">THARU BOY GAME STORE</span>. Your high-speed hub for top-tier PC, Android, Online, and Offline games. Clean downloads, real ratings, and immediate WhatsApp assistance.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <button onclick="scrollToId('all-games-section')" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-emerald-600 hover:from-brand-400 hover:to-emerald-500 text-black font-extrabold text-sm shadow-neon-green hover:scale-105 transition-all duration-300 flex items-center gap-2">
+                <i class="fa-solid fa-gamepad text-base"></i> Browse Games
+              </button>
+              <button onclick="filterCategory('Android Games')" class="px-6 py-3.5 rounded-xl glass-panel hover:bg-gray-800 text-white font-bold text-sm border border-gray-700/80 hover:border-cyan-400 transition-all flex items-center gap-2">
+                <i class="fa-brands fa-android text-emerald-400 text-lg"></i> Android Collection
+              </button>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-3 gap-4 pt-6 border-t border-gray-800/80 max-w-md">
+              <div>
+                <p class="font-heading font-bold text-xl sm:text-2xl text-brand-neon">100K+</p>
+                <p class="text-xs text-gray-400">Catalog Capacity</p>
+              </div>
+              <div>
+                <p class="font-heading font-bold text-xl sm:text-2xl text-cyan-400">100%</p>
+                <p class="text-xs text-gray-400">Tested Links</p>
+              </div>
+              <div>
+                <p class="font-heading font-bold text-xl sm:text-2xl text-purple-400">24/7</p>
+                <p class="text-xs text-gray-400">WhatsApp Help</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEARCH & FILTER BAR SECTION -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-panel rounded-2xl p-4 sm:p-6 shadow-xl space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4">
+            
+            <!-- Search Field -->
+            <div class="md:col-span-5 relative">
+              <input type="text" id="main-search-input" placeholder="Search by game name, keyword..." 
+                     class="w-full bg-gray-900/90 text-sm text-gray-100 rounded-xl pl-11 pr-4 py-3 border border-gray-700/80 focus:border-brand-500 focus:outline-none transition-all">
+              <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-gray-400"></i>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="md:col-span-3">
+              <select id="filter-category" class="w-full bg-gray-900/90 text-sm text-gray-200 rounded-xl px-4 py-3 border border-gray-700/80 focus:border-brand-500 focus:outline-none transition-all">
+                <option value="ALL">All Categories</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Racing">Racing</option>
+                <option value="Shooting">Shooting</option>
+                <option value="Sports">Sports</option>
+                <option value="Strategy">Strategy</option>
+                <option value="Horror">Horror</option>
+                <option value="RPG">RPG</option>
+                <option value="Simulation">Simulation</option>
+                <option value="Offline Games">Offline Games</option>
+                <option value="Online Games">Online Games</option>
+                <option value="Android Games">Android Games</option>
+                <option value="PC Games">PC Games</option>
+              </select>
+            </div>
+
+            <!-- Platform Filter -->
+            <div class="md:col-span-2">
+              <select id="filter-platform" class="w-full bg-gray-900/90 text-sm text-gray-200 rounded-xl px-3 py-3 border border-gray-700/80 focus:border-brand-500 focus:outline-none transition-all">
+                <option value="ALL">All Platforms</option>
+                <option value="PC">PC</option>
+                <option value="Android">Android</option>
+                <option value="PC / Android">Cross Platform</option>
+              </select>
+            </div>
+
+            <!-- Sorting Dropdown -->
+            <div class="md:col-span-2">
+              <select id="filter-sort" class="w-full bg-gray-900/90 text-sm text-brand-neon font-semibold rounded-xl px-3 py-3 border border-gray-700/80 focus:border-brand-500 focus:outline-none transition-all">
+                <option value="popular">Most Popular</option>
+                <option value="newest">Newest Releases</option>
+                <option value="rating">Highest Rated</option>
+                <option value="title">A - Z</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURED GAMES SLIDER / GRID SECTION -->
+      <section id="featured-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <span class="text-brand-neon text-xs font-bold tracking-widest uppercase">Editor's Pick</span>
+            <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-white">Featured Games</h2>
+          </div>
+          <button onclick="scrollToId('all-games-section')" class="text-xs sm:text-sm text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1">
+            View All <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div id="featured-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Dynamically Injected Cards -->
+        </div>
+      </section>
+
+      <!-- GAME CATEGORIES BADGES SECTION -->
+      <section id="categories-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-6">
+          <span class="text-cyan-400 text-xs font-bold tracking-widest uppercase">Explore Genres</span>
+          <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-white">Game Categories</h2>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4" id="categories-list">
+          <!-- Dynamic Category Buttons -->
+        </div>
+      </section>
+
+      <!-- TRENDING / NEW RELEASES TABS SECTION -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6 border-b border-gray-800 pb-4">
+          <h2 class="font-heading text-2xl font-extrabold text-white">Top Selections</h2>
+          <div class="flex gap-2 bg-gray-900 p-1 rounded-xl border border-gray-800">
+            <button onclick="setTab('trending')" id="tab-trending" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-brand-500 text-black">
+              🔥 Trending
+            </button>
+            <button onclick="setTab('new')" id="tab-new" class="px-4 py-2 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition-all">
+              ✨ New Releases
+            </button>
+          </div>
+        </div>
+        <div id="tab-games-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <!-- Dynamic Tab Content -->
+        </div>
+      </section>
+
+      <!-- ALL GAMES MARKETPLACE (PAGINATED & SCALABLE) -->
+      <section id="all-games-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div>
+            <span class="text-brand-neon text-xs font-bold tracking-widest uppercase">Scalable Database</span>
+            <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-white">All Games Catalog</h2>
+          </div>
+          <div class="text-xs text-gray-400 font-mono" id="results-count">
+            Showing results...
+          </div>
+        </div>
+
+        <!-- Cards Grid -->
+        <div id="all-games-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <!-- Dynamic Cards Loading via Scalable Controller -->
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-3" id="pagination-controls">
+          <!-- Dynamic Pagination Buttons -->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ABOUT US SECTION -->
+    <div id="view-about" class="hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="glass-panel rounded-3xl p-8 sm:p-12 space-y-8 border border-brand-500/20">
+        <div class="text-center space-y-3">
+          <span class="text-brand-neon text-xs font-bold tracking-widest uppercase">About The Platform</span>
+          <h1 class="font-heading text-3xl sm:text-5xl font-extrabold text-white">THARU BOY GAME STORE</h1>
+          <p class="text-cyan-400 font-bold text-sm">Created by MR. THARU BOY</p>
+        </div>
+
+        <div class="space-y-6 text-gray-300 leading-relaxed text-sm sm:text-base border-t border-gray-800 pt-8">
+          <p>
+            Welcome to <strong class="text-white">THARU BOY GAME STORE</strong>, your ultimate digital distribution catalog designed to give gamers seamless access to high-quality PC games, Android APKs, offline classics, and online multiplayer hits.
+          </p>
+          <p>
+            Founded and engineered by <strong class="text-brand-neon">MR. THARU BOY</strong>, this platform is optimized for modern performance with a high-capacity modular API structure capable of scaling up to <strong class="text-white">100,000+ games</strong> seamlessly.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div class="bg-gray-900/80 p-6 rounded-2xl border border-gray-800">
+              <i class="fa-solid fa-microchip text-brand-neon text-2xl mb-3"></i>
+              <h3 class="font-heading text-lg font-bold text-white mb-2">Scalable Architecture</h3>
+              <p class="text-xs text-gray-400">Built using lazy-loading endpoints and asynchronous pagination to prevent heavy memory loads when storing large catalog indexes.</p>
+            </div>
+            <div class="bg-gray-900/80 p-6 rounded-2xl border border-gray-800">
+              <i class="fa-brands fa-whatsapp text-emerald-400 text-2xl mb-3"></i>
+              <h3 class="font-heading text-lg font-bold text-white mb-2">Direct WhatsApp Support</h3>
+              <p class="text-xs text-gray-400">Get direct 1-on-1 setup assistance and game requests directly from creator MR. THARU BOY on WhatsApp (+94 77 308 9283).</p>
+            </div>
+          </div>
+
+          <div class="text-center pt-4">
+            <button onclick="showSection('home')" class="px-8 py-3 rounded-xl bg-brand-500 text-black font-bold text-sm shadow-neon-green hover:bg-brand-400 transition-all">
+              Return to Game Catalog
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <div id="view-contact" class="hidden max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="glass-panel rounded-3xl p-8 sm:p-12 space-y-8">
+        <div class="text-center space-y-2">
+          <span class="text-brand-neon text-xs font-bold tracking-widest uppercase">Get in Touch</span>
+          <h1 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Contact & Support</h1>
+          <p class="text-gray-400 text-sm">Need a game added or installation assistance? Contact MR. THARU BOY directly.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+          
+          <!-- Contact Info -->
+          <div class="space-y-6">
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-gray-900/80 border border-gray-800">
+              <div class="p-3 bg-emerald-500/20 text-emerald-400 rounded-lg text-xl">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div>
+                <h4 class="text-xs text-gray-400 uppercase font-bold">Official WhatsApp</h4>
+                <p class="text-white font-mono font-bold mt-1">+94 77 308 9283</p>
+                <a href="https://wa.me/94773089283?text=Hello%20MR.%20THARU%20BOY%2C%20I%20came%20from%20your%20Game%20Store%20website%20and%20I%20need%20help%20with%20a%20game." 
+                   target="_blank" class="inline-block mt-2 text-xs text-brand-neon hover:underline font-bold">
+                   Open Chat Direct <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-gray-900/80 border border-gray-800">
+              <div class="p-3 bg-cyan-500/20 text-cyan-400 rounded-lg text-xl">
+                <i class="fa-solid fa-user-gear"></i>
+              </div>
+              <div>
+                <h4 class="text-xs text-gray-400 uppercase font-bold">Store Developer</h4>
+                <p class="text-white font-bold mt-1">MR. THARU BOY</p>
+                <p class="text-xs text-gray-400">Head Administrator & Game Curator</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Message Box -->
+          <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-400 mb-1">Your Name</label>
+              <input type="text" required placeholder="Gamer Name" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-400 mb-1">Message / Game Request</label>
+              <textarea rows="4" required placeholder="Tell us which game you need..." class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"></textarea>
+            </div>
+            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-brand-500 text-black font-extrabold text-sm shadow-neon-green hover:scale-[1.02] transition-all">
+              Send via WhatsApp
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= MODAL: GAME DETAILS PAGE ================= -->
+  <div id="game-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative w-full max-w-4xl glass-panel rounded-3xl border border-gray-700 shadow-2xl overflow-hidden my-8 my-auto">
+      
+      <!-- Close Button -->
+      <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-gray-300 hover:text-white hover:bg-brand-500 hover:text-black transition-all flex items-center justify-center">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <!-- Modal Content Body -->
+      <div id="modal-content">
+        <!-- Injected dynamically when game is clicked -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FLOATING WHATSAPP BUTTON ================= -->
+  <a href="https://wa.me/94773089283?text=Hello%20MR.%20THARU%20BOY%2C%20I%20came%20from%20your%20Game%20Store%20website%20and%20I%20need%20help%20with%20a%20game." 
+     target="_blank" 
+     aria-label="Contact MR. THARU BOY on WhatsApp"
+     class="fixed bottom-6 right-6 z-40 group flex items-center gap-3">
+    
+    <!-- Tooltip Label -->
+    <span class="hidden sm:inline-block glass-panel px-3 py-1.5 rounded-full text-xs font-bold text-emerald-400 border border-emerald-500/30 shadow-lg transition-all transform group-hover:-translate-x-1">
+      Need help? Chat with MR. THARU BOY
+    </span>
+
+    <!-- Animated Button Icon -->
+    <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-600 via-green-500 to-teal-400 p-[2px] shadow-neon-green hover:scale-110 transition-transform duration-300 pulse-animation flex items-center justify-center">
+      <div class="w-full h-full bg-[#0a0d14] rounded-full flex items-center justify-center hover:bg-emerald-500 transition-colors group">
+        <i class="fa-brands fa-whatsapp text-emerald-400 text-3xl group-hover:text-black transition-colors"></i>
+      </div>
+    </div>
+  </a>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="glass-panel border-t border-gray-800/80 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-gray-800/80">
+        
+        <!-- Brand Info -->
+        <div class="md:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-gamepad text-brand-neon text-2xl"></i>
+            <span class="font-heading font-black text-xl text-white">THARU BOY GAME STORE</span>
+          </div>
+          <p class="text-xs text-gray-400 max-w-md leading-relaxed">
+            High-performance game library built to accommodate over 100,000 titles. Streamlined download links, tested APKs, PC releases, and direct technical support.
+          </p>
+          <p class="text-xs text-emerald-400 font-semibold">
+            Official Developer: MR. THARU BOY
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="space-y-3">
+          <h4 class="font-heading text-sm font-bold text-white uppercase tracking-wider">Quick Navigation</h4>
+          <ul class="space-y-2 text-xs text-gray-400">
+            <li><a href="#home" onclick="showSection('home')" class="hover:text-brand-neon transition-colors">Home Store</a></li>
+            <li><a href="#categories" onclick="scrollToId('categories-section')" class="hover:text-brand-neon transition-colors">All Categories</a></li>
+            <li><a href="#about" onclick="showSection('about')" class="hover:text-brand-neon transition-colors">About Us</a></li>
+            <li><a href="#contact" onclick="showSection('contact')" class="hover:text-brand-neon transition-colors">Contact Developer</a></li>
+          </ul>
+        </div>
+
+        <!-- Support Info -->
+        <div class="space-y-3">
+          <h4 class="font-heading text-sm font-bold text-white uppercase tracking-wider">Support Center</h4>
+          <p class="text-xs text-gray-400">Direct WhatsApp Assistance:</p>
+          <a href="https://wa.me/94773089283" target="_blank" class="inline-flex items-center gap-2 text-sm font-bold text-brand-neon hover:underline">
+            <i class="fa-brands fa-whatsapp"></i> +94 77 308 9283
+          </a>
+          <p class="text-[11px] text-gray-500 pt-2">Sri Lanka / Global Support</p>
+        </div>
+
+      </div>
+
+      <!-- Mandatory Copyright Line -->
+      <div class="pt-8 text-center text-xs text-gray-400 font-medium">
+        © THARU BOY GAME STORE — Created by MR. THARU BOY
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT APP LOGIC ================= -->
+  <script>
+    /* =========================================================================
+       1. SAMPLE DATA ENGINE (Scalable Mock Database of 32 Initial Seed Games)
+       -------------------------------------------------------------------------
+       In a live deployment of 100,000+ games, this data array would be hosted
+       on MongoDB, PostgreSQL, or Supabase, and fetched dynamically via API.
+       ========================================================================= */
+    
+    const SEED_GAMES = [
+      {
+        id: "game-1",
+        title: "Cyberpunk 2077: Phantom Liberty",
+        category: "Action",
+        platform: "PC",
+        rating: 4.8,
+        size: "70.0 GB",
+        year: 2023,
+        version: "v2.12",
+        offline: true,
+        online: false,
+        image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
+        description: "An open-world, action-adventure RPG set in Night City. Become Cyberpunk mercenary V and embark on a high-stakes mission of espionage.",
+        minReqs: "OS: Windows 10/11 | CPU: Intel Core i7-6700 | RAM: 12 GB | GPU: GTX 1060 6GB",
+        downloadUrl: "https://store.steampowered.com/app/1091500/Cyberpunk_2077/",
+        featured: true,
+        trending: true,
+        releaseDate: "2023-09-26"
+      },
+      {
+        id: "game-2",
+        title: "Genshin Impact Mobile",
+        category: "Android Games",
+        platform: "Android",
+        rating: 4.7,
+        size: "24.5 GB",
+        year: 2024,
+        version: "v4.6",
+        offline: false,
+        online: true,
+        image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80",
+        description: "Explore Teyvat in this anime open-world action RPG. Build team combinations and master elemental powers.",
+        minReqs: "Android 8.1+ | Snapdragon 845 / Dimensity 8100 | RAM: 4 GB",
+        downloadUrl: "https://play.google.com/store/apps/details?id=com.miHoYo.GenshinImpact",
+        featured: true,
+        trending: true,
+        releaseDate: "2024-04-24"
+      },
+      {
+        id: "game-3",
+        title: "Grand Theft Auto V",
+        category: "Action",
+        platform: "PC",
+        rating: 4.9,
+        size: "110.0 GB",
+        year: 2022,
+        version: "v1.0.2802",
+        offline: true,
+        online: true,
+        image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80",
+        description: "When a young street hustler, a retired bank robber and a terrifying psychopath find themselves entangled with the criminal underworld.",
+        minReqs: "OS: Windows 10 64bit | CPU: Intel Core i5 3470 | RAM: 8 GB | GPU: GTX 660",
+        downloadUrl: "https://store.rockstargames.com/game/buy-gta-v",
+        featured: true,
+        trending: true,
+        releaseDate: "2022-03-15"
+      },
+      {
+        id: "game-4",
+        title: "Need for Speed: Unbound",
+        category: "Racing",
+        platform: "PC",
+        rating: 4.5,
+        size: "35.0 GB",
+        year: 2023,
+        version: "v1.0.4",
+        offline: true,
+        online: true,
+        image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80",
+        description: "Race against time, outsmart the cops, and take on weekly qualifiers to reach The Grand, Lakeshore's ultimate street racing challenge.",
+        minReqs: "OS: Windows 10 64bit | CPU: Core i5-8600 | RAM: 8 GB | GPU: GTX 1050 Ti",
+        downloadUrl: "https://store.steampowered.com/app/1846380/Need_for_Speed_Unbound/",
+        featured: false,
+        trending: true,
+        releaseDate: "2023-01-10"
+      },
+      {
+        id: "game-5",
+        title: "PUBG MOBILE: Payload",
+        category: "Android Games",
+        platform: "Android",
+        rating: 4.6,
+        size: "1.8 GB",
+        year: 2024,
+        version: "v3.1",
+        offline: false,
+        online: true,
+        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+        description: "Extreme battle royale combat with heavy armament, rocket launchers, helicopter combat, and fast-paced squad play.",
+        minReqs: "Android 6.0+ | RAM: 3 GB | Storage: 4 GB free",
+        downloadUrl: "https://play.google.com/store/apps/details?id=com.tencent.ig",
+        featured: true,
+        trending: false,
+        releaseDate: "2024-03-18"
+      },
+      {
+        id: "game-6",
+        title: "Resident Evil 4 Remake",
+        category: "Horror",
+        platform: "PC",
+        rating: 4.9,
+        size: "60.0 GB",
+        year: 2023,
+        version: "v1.0.2",
+        offline: true,
+        online: false,
+        image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80",
+        description: "Survival horror reimagined. Leon S. Kennedy searches for the President's kidnapped daughter in a secluded European village.",
+        minReqs: "OS: Windows 10 64bit | CPU: Ryzen 3 1200 | RAM: 8 GB | GPU: RX 560",
+        downloadUrl: "https://store.steampowered.com/app/2050650/Resident_Evil_4/",
+        featured: false,
+        trending: true,
+        releaseDate: "2023-03-24"
+      },
+      {
+        id: "game-7",
+        title: "Elden Ring: Shadow of the Erdtree",
+        category: "RPG",
+        platform: "PC",
+        rating: 5.0,
+        size: "80.0 GB",
+        year: 2024,
+        version: "v1.10",
+        offline: true,
+        online: true,
+        image: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=800&q=80",
+        description: "Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between.",
+        minReqs: "OS: Windows 10 | CPU: Intel i5-8400 | RAM: 12 GB | GPU: GTX 1060 3GB",
+        downloadUrl: "https://store.steampowered.com/app/1245620/ELDEN_RING/",
+        featured: true,
+        trending: true,
+        releaseDate: "2024-06-21"
+      },
+      {
+        id: "game-8",
+        title: "Asphalt 9: Legends",
+        category: "Racing",
+        platform: "PC / Android",
+        rating: 4.4,
+        size: "3.2 GB",
+        year: 2023,
+        version: "v4.2",
+        offline: true,
+        online: true,
+        image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80",
+        description: "Take the wheel of real cars from renowned high-end legendary motor manufacturers, such as Ferrari, Porsche, Lamborghini, and W Motors.",
+        minReqs: "Android 7.0+ or Windows 10 | RAM: 4 GB",
+        downloadUrl: "https://asphaltlegends.com/",
+        featured: false,
+        trending: false,
+        releaseDate: "2023-08-11"
+      },
+      {
+        id: "game-9",
+        title: "Call of Duty: Warzone Mobile",
+        category: "Shooting",
+        platform: "Android",
+        rating: 4.3,
+        size: "8.5 GB",
+        year: 2024,
+        version: "v1.2",
+        offline: false,
+        online: true,
+        image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80",
+        description: "Authentic Call of Duty gameplay on mobile with real weapon mechanics, movement, and Verdansk battle royale map.",
+        minReqs: "Android 10+ | Snapdragon 730G+ | RAM: 6 GB",
+        downloadUrl: "https://play.google.com/store/apps/details?id=com.activision.callofduty.warzone",
+        featured: false,
+        trending: true,
+        releaseDate: "2024-03-21"
+      },
+      {
+        id: "game-10",
+        title: "FC 24 Mobile Soccer",
+        category: "Sports",
+        platform: "Android",
+        rating: 4.5,
+        size: "2.1 GB",
+        year: 2024,
+        version: "v20.1",
+        offline: true,
+        online: true,
+        image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80",
+        description: "Build your Ultimate Team of football superstars, execute authentic tactical controls, and play in realistic stadiums.",
+        minReqs: "Android 7.0+ | RAM: 3 GB",
+        downloadUrl: "https://play.google.com/store/apps/details?id=com.ea.gp.fifamobile",
+        featured: false,
+        trending: false,
+        releaseDate: "2024-01-15"
+      },
+      {
+        id: "game-11",
+        title: "Age of Empires IV",
+        category: "Strategy",
+        platform: "PC",
+        rating: 4.7,
+        size: "50.0 GB",
+        year: 2022,
+        version: "v9.1.1",
+        offline: true,
+        online: true,
+        image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+        description: "Command historical civilizations, build massive strongholds, and lead vast armies into strategic warfare.",
+        minReqs: "Windows 10 | CPU: Intel i5-6300U | RAM: 8 GB | GPU: Intel HD 520",
+        downloadUrl: "https://store.steampowered.com/app/1466860/Age_of_Empires_IV/",
+        featured: false,
+        trending: false,
+        releaseDate: "2022-10-25"
+      },
+      {
+        id: "game-12",
+        title: "Euro Truck Simulator 2",
+        category: "Simulation",
+        platform: "PC",
+        rating: 4.9,
+        size: "25.0 GB",
+        year: 2023,
+        version: "v1.49",
+        offline: true,
+        online: true,
+        image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80",
+        description: "Travel across Europe as king of the road, a trucker who delivers important cargo across impressive distances!",
+        minReqs: "OS: Windows 10 | CPU: Core i5 | RAM: 6 GB | GPU: GTX 760",
+        downloadUrl: "https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/",
+        featured: false,
+        trending: false,
+        releaseDate: "2023-11-20"
+      }
+    ];
+
+    // Auto-generate additional mock items up to 32 to demonstrate scalability pattern
+    for (let i = 13; i <= 32; i++) {
+      const genres = ["Action", "Adventure", "Racing", "Shooting", "Sports", "Strategy", "Horror", "RPG", "Simulation", "Offline Games", "Android Games", "PC Games"];
+      const randomGenre = genres[i % genres.length];
+      const platform = i % 2 === 0 ? "PC" : "Android";
+      
+      SEED_GAMES.push({
+        id: `game-${i}`,
+        title: `Project Apex: Realm ${i}`,
+        category: randomGenre,
+        platform: platform,
+        rating: (3.8 + (i % 12) * 0.1).toFixed(1),
+        size: `${(i * 1.4).toFixed(1)} GB`,
+        year: 2020 + (i % 5),
+        version: `v1.${i % 9}.0`,
+        offline: i % 2 === 0,
+        online: i % 3 === 0,
+        image: `https://images.unsplash.com/photo-${1500000000000 + i * 10000}?auto=format&fit=crop&w=800&q=80`,
+        description: `High-octane ${randomGenre} experience designed with modern graphics and smooth controls. Certified clean release by MR. THARU BOY.`,
+        minReqs: platform === "PC" ? "Windows 10/11 | 8GB RAM | Direct X12" : "Android 9.0+ | 4GB RAM",
+        downloadUrl: "https://wa.me/94773089283",
+        featured: i % 7 === 0,
+        trending: i % 4 === 0,
+        releaseDate: `202${i % 5}-05-12`
+      });
+    }
+
+    /* =========================================================================
+       2. MOCK API CONTROLLER (Supports Pagination & 100,000+ Game Queries)
+       -------------------------------------------------------------------------
+       In production, replace 'MockGameAPI.fetchGames' with standard fetch calls
+       to your backend endpoint (e.g., https://api.tharuboy.com/games?page=1)
+       ========================================================================= */
+
+    const MockGameAPI = {
+      pageSize: 8,
+
+      async fetchGames({ page = 1, search = '', category = 'ALL', platform = 'ALL', sort = 'popular' }) {
+        // Simulate network latency (200ms)
+        await new Promise(res => setTimeout(res, 200));
+
+        let results = [...SEED_GAMES];
+
+        // 1. Search Filter
+        if (search.trim() !== '') {
+          const q = search.toLowerCase();
+          results = results.filter(g => 
+            g.title.toLowerCase().includes(q) || 
+            g.category.toLowerCase().includes(q) || 
+            g.platform.toLowerCase().includes(q) ||
+            g.year.toString().includes(q)
+          );
+        }
+
+        // 2. Category Filter
+        if (category !== 'ALL') {
+          if (category === 'Offline Games') {
+            results = results.filter(g => g.offline);
+          } else if (category === 'Online Games') {
+            results = results.filter(g => g.online);
+          } else {
+            results = results.filter(g => g.category.toLowerCase() === category.toLowerCase());
+          }
+        }
+
+        // 3. Platform Filter
+        if (platform !== 'ALL') {
+          results = results.filter(g => g.platform.includes(platform));
+        }
+
+        // 4. Sorting Logic
+        if (sort === 'popular') {
+          results.sort((a, b) => (b.trending ? 1 : 0) - (a.trending ? 1 : 0) || b.rating - a.rating);
+        } else if (sort === 'newest') {
+          results.sort((a, b) => b.year - a.year);
+        } else if (sort === 'rating') {
+          results.sort((a, b) => b.rating - a.rating);
+        } else if (sort === 'title') {
+          results.sort((a, b) => a.title.localeCompare(b.title));
+        }
+
+        // 5. Paginate
+        const totalCount = results.length;
+        const totalPages = Math.ceil(totalCount / this.pageSize) || 1;
+        const startIdx = (page - 1) * this.pageSize;
+        const paginatedItems = results.slice(startIdx, startIdx + this.pageSize);
+
+        return {
+          games: paginatedItems,
+          totalCount,
+          totalPages,
+          currentPage: page
+        };
+      },
+
+      async getGameById(id) {
+        return SEED_GAMES.find(g => g.id === id) || SEED_GAMES[0];
+      }
+    };
+
+    /* =========================================================================
+       3. STATE MANAGEMENT & UI CONTROLLERS
+       ========================================================================= */
+
+    let currentState = {
+      page: 1,
+      search: '',
+      category: 'ALL',
+      platform: 'ALL',
+      sort: 'popular',
+      activeTab: 'trending'
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initCategoriesUI();
+      renderFeaturedGames();
+      renderTabGames('trending');
+      loadAllGames();
+      setupEventListeners();
+    });
+
+    // Render Categories Badges
+    const CATEGORIES = [
+      { name: 'Action', icon: 'fa-burst' },
+      { name: 'Adventure', icon: 'fa-compass' },
+      { name: 'Racing', icon: 'fa-flag-checkered' },
+      { name: 'Shooting', icon: 'fa-crosshair' },
+      { name: 'Sports', icon: 'fa-football' },
+      { name: 'Strategy', icon: 'fa-chess' },
+      { name: 'Horror', icon: 'fa-ghost' },
+      { name: 'RPG', icon: 'fa-dragon' },
+      { name: 'Simulation', icon: 'fa-vr-cardboard' },
+      { name: 'Offline Games', icon: 'fa-wifi-slash' },
+      { name: 'Online Games', icon: 'fa-globe' },
+      { name: 'Android Games', icon: 'fa-android' },
+      { name: 'PC Games', icon: 'fa-desktop' }
+    ];
+
+    function initCategoriesUI() {
+      const container = document.getElementById('categories-list');
+      container.innerHTML = CATEGORIES.map(cat => `
+        <button onclick="filterCategory('${cat.name}')" 
+                class="glass-panel hover:bg-brand-card hover:border-brand-neon p-3.5 rounded-2xl flex flex-col items-center justify-center gap-2 group transition-all duration-300">
+          <i class="fa-solid ${cat.icon} text-xl text-gray-400 group-hover:text-brand-neon transition-colors"></i>
+          <span class="text-xs font-bold text-gray-300 group-hover:text-white">${cat.name}</span>
+        </button>
+      `).join('');
+    }
+
+    // Render Featured Games Cards
+    function renderFeaturedGames() {
+      const featured = SEED_GAMES.filter(g => g.featured).slice(0, 3);
+      const container = document.getElementById('featured-container');
+      container.innerHTML = featured.map(g => createGameCardHTML(g, true)).join('');
+    }
+
+    // Render Tabbed Games (Trending vs New Releases)
+    function renderTabGames(tab) {
+      currentState.activeTab = tab;
+      let filtered = [...SEED_GAMES];
+      if (tab === 'trending') {
+        filtered = filtered.filter(g => g.trending).slice(0, 4);
+      } else {
+        filtered.sort((a, b) => b.year - a.year).slice(0, 4);
+      }
+      const container = document.getElementById('tab-games-container');
+      container.innerHTML = filtered.map(g => createGameCardHTML(g, false)).join('');
+    }
+
+    function setTab(tab) {
+      document.getElementById('tab-trending').className = tab === 'trending' 
+        ? 'px-4 py-2 rounded-lg text-xs font-bold transition-all bg-brand-500 text-black'
+        : 'px-4 py-2 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition-all';
+      
+      document.getElementById('tab-new').className = tab === 'new'
+        ? 'px-4 py-2 rounded-lg text-xs font-bold transition-all bg-brand-500 text-black'
+        : 'px-4 py-2 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition-all';
+
+      renderTabGames(tab);
+    }
+
+    // Load Paginated Catalog
+    async function loadAllGames() {
+      const container = document.getElementById('all-games-container');
+      container.innerHTML = `
+        <div class="col-span-full py-12 text-center">
+          <i class="fa-solid fa-spinner fa-spin text-3xl text-brand-neon mb-3"></i>
+          <p class="text-xs text-gray-400">Querying database catalog...</p>
+        </div>
+      `;
+
+      const response = await MockGameAPI.fetchGames(currentState);
+
+      document.getElementById('results-count').innerText = 
+        `Showing ${response.games.length} of ${response.totalCount} games | Page ${response.currentPage} of ${response.totalPages}`;
+
+      if (response.games.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full glass-panel p-8 rounded-2xl text-center">
+            <i class="fa-solid fa-ghost text-4xl text-gray-600 mb-2"></i>
+            <h3 class="text-lg font-bold text-white">No games found matching criteria</h3>
+            <p class="text-xs text-gray-400 mt-1">Try resetting search filters or requesting the game directly via WhatsApp.</p>
+          </div>
+        `;
+        document.getElementById('pagination-controls').innerHTML = '';
+        return;
+      }
+
+      container.innerHTML = response.games.map(g => createGameCardHTML(g, false)).join('');
+      renderPagination(response.totalPages, response.currentPage);
+    }
+
+    // Dynamic Game Card Template HTML
+    function createGameCardHTML(game, isFeatured = false) {
+      return `
+        <div class="glass-panel rounded-2xl overflow-hidden border border-gray-800 hover:border-brand-500/50 transition-all duration-300 hover:-translate-y-1.5 flex flex-col group relative">
+          
+          <!-- Image Header -->
+          <div class="relative h-48 overflow-hidden bg-gray-900">
+            <img src="${game.image}" 
+                 alt="${game.title}" 
+                 loading="lazy" 
+                 onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80'"
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-transparent to-transparent opacity-80"></div>
+            
+            <!-- Category Badge -->
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-extrabold text-brand-neon border border-brand-500/30 uppercase tracking-wider">
+              ${game.category}
+            </span>
+
+            <!-- Rating Badge -->
+            <span class="absolute top-3 right-3 px-2 py-1 rounded-md bg-black/70 backdrop-blur-md text-xs font-bold text-amber-400 flex items-center gap-1">
+              <i class="fa-solid fa-star text-[10px]"></i> ${game.rating}
+            </span>
+          </div>
+
+          <!-- Card Body -->
+          <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex items-center justify-between text-[11px] text-gray-400 mb-1">
+                <span class="font-semibold text-cyan-400"><i class="fa-solid fa-gamepad"></i> ${game.platform}</span>
+                <span><i class="fa-solid fa-hard-drive"></i> ${game.size}</span>
+              </div>
+
+              <h3 class="font-heading font-bold text-base text-white group-hover:text-brand-neon transition-colors line-clamp-1">
+                ${game.title}
+              </h3>
+
+              <p class="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">
+                ${game.description}
+              </p>
+            </div>
+
+            <!-- Card Actions -->
+            <div class="pt-2 border-t border-gray-800/80 flex items-center gap-2">
+              <button onclick="openGameModal('${game.id}')" 
+                      class="flex-1 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-bold text-xs transition-colors flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-circle-info"></i> Details
+              </button>
+
+              <a href="${game.downloadUrl}" target="_blank" 
+                 class="flex-1 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-black font-extrabold text-xs transition-all shadow-neon-green flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-download"></i> Get Game
+              </a>
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+
+    // Render Pagination Controls
+    function renderPagination(totalPages, currentPage) {
+      const container = document.getElementById('pagination-controls');
+      if (totalPages <= 1) {
+        container.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      
+      // Prev Button
+      html += `
+        <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} 
+          class="px-3 py-2 rounded-xl glass-panel text-xs font-bold text-gray-300 disabled:opacity-40 hover:text-white hover:border-brand-500">
+          <i class="fa-solid fa-chevron-left"></i> Prev
+        </button>
+      `;
+
+      // Page Numbers
+      for (let i = 1; i <= totalPages; i++) {
+        const isActive = i === currentPage;
+        html += `
+          <button onclick="changePage(${i})" 
+            class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${isActive ? 'bg-brand-500 text-black shadow-neon-green' : 'glass-panel text-gray-300 hover:text-white'}">
+            ${i}
+          </button>
+        `;
+      }
+
+      // Next Button
+      html += `
+        <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} 
+          class="px-3 py-2 rounded-xl glass-panel text-xs font-bold text-gray-300 disabled:opacity-40 hover:text-white hover:border-brand-500">
+          Next <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    function changePage(page) {
+      currentState.page = page;
+      loadAllGames();
+      scrollToId('all-games-section');
+    }
+
+    /* =========================================================================
+       4. GAME DETAILS MODAL
+       ========================================================================= */
+
+    async function openGameModal(id) {
+      const game = await MockGameAPI.getGameById(id);
+      const modal = document.getElementById('game-modal');
+      const container = document.getElementById('modal-content');
+
+      // Related Games Filter
+      const related = SEED_GAMES.filter(g => g.category === game.category && g.id !== game.id).slice(0, 3);
+
+      container.innerHTML = `
+        <div class="relative">
+          <!-- Hero Banner -->
+          <div class="h-64 sm:h-80 w-full relative bg-gray-950">
+            <img src="${game.image}" alt="${game.title}" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#121722] via-[#121722]/60 to-transparent"></div>
+            
+            <div class="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <span class="px-3 py-1 rounded-full bg-brand-500/20 border border-brand-500/40 text-brand-neon text-xs font-bold uppercase tracking-wider">
+                  ${game.category}
+                </span>
+                <h2 class="font-heading font-black text-2xl sm:text-4xl text-white mt-2">${game.title}</h2>
+              </div>
+              <div class="flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-xl border border-gray-700">
+                <i class="fa-solid fa-star text-amber-400"></i>
+                <span class="text-white font-bold text-sm">${game.rating} / 5.0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Details Grid -->
+          <div class="p-6 sm:p-8 space-y-8">
+            
+            <!-- Quick Meta Specs -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl bg-gray-900/90 border border-gray-800 text-xs">
+              <div>
+                <span class="text-gray-400 block">Platform</span>
+                <span class="font-bold text-cyan-400 text-sm mt-0.5 block"><i class="fa-solid fa-desktop"></i> ${game.platform}</span>
+              </div>
+              <div>
+                <span class="text-gray-400 block">File Size</span>
+                <span class="font-bold text-white text-sm mt-0.5 block"><i class="fa-solid fa-hard-drive"></i> ${game.size}</span>
+              </div>
+              <div>
+                <span class="text-gray-400 block">Version</span>
+                <span class="font-bold text-brand-neon text-sm mt-0.5 block"><i class="fa-solid fa-code-branch"></i> ${game.version}</span>
+              </div>
+              <div>
+                <span class="text-gray-400 block">Release Year</span>
+                <span class="font-bold text-white text-sm mt-0.5 block"><i class="fa-solid fa-calendar"></i> ${game.year}</span>
+              </div>
+            </div>
+
+            <!-- Overview Description -->
+            <div class="space-y-2">
+              <h3 class="font-heading text-lg font-bold text-white">About the Game</h3>
+              <p class="text-gray-300 text-sm leading-relaxed">${game.description}</p>
+            </div>
+
+            <!-- Minimum System Requirements -->
+            <div class="p-4 rounded-2xl bg-gray-900/60 border border-gray-800 space-y-2">
+              <h4 class="text-xs font-bold uppercase tracking-widest text-brand-neon">Hardware Requirements</h4>
+              <p class="text-xs font-mono text-gray-300">${game.minReqs}</p>
+            </div>
+
+            <!-- Primary Actions -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a href="${game.downloadUrl}" target="_blank" 
+                 class="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-emerald-600 hover:from-brand-400 hover:to-emerald-500 text-black font-extrabold text-sm shadow-neon-green text-center transition-all">
+                <i class="fa-solid fa-download"></i> Download / Get Game Now
+              </a>
+              
+              <a href="https://wa.me/94773089283?text=Hello%20MR.%20THARU%20BOY%2C%20I%20need%20help%20installing%20${encodeURIComponent(game.title)}" 
+                 target="_blank" 
+                 class="px-6 py-3.5 rounded-xl glass-panel hover:bg-gray-800 text-emerald-400 border border-emerald-500/40 font-bold text-sm flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-base"></i> Help with Installation
+              </a>
+            </div>
+
+            <!-- Related Games Section -->
+            ${related.length > 0 ? `
+              <div class="pt-6 border-t border-gray-800 space-y-4">
+                <h4 class="font-heading text-sm font-bold text-white uppercase tracking-wider">Related Games</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  ${related.map(r => `
+                    <div onclick="openGameModal('${r.id}')" class="cursor-pointer glass-panel p-3 rounded-xl hover:border-brand-500 transition-all flex items-center gap-3">
+                      <img src="${r.image}" class="w-12 h-12 rounded-lg object-cover">
+                      <div>
+                        <h5 class="text-xs font-bold text-white line-clamp-1">${r.title}</h5>
+                        <span class="text-[10px] text-cyan-400">${r.platform}</span>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('game-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    /* =========================================================================
+       5. EVENT LISTENERS & NAVIGATION HANDLERS
+       ========================================================================= */
+
+    function setupEventListeners() {
+      // Main Search Bar Input
+      const searchInput = document.getElementById('main-search-input');
+      let debounceTimeout;
+      searchInput.addEventListener('input', (e) => {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() => {
+          currentState.search = e.target.value;
+          currentState.page = 1;
+          loadAllGames();
+        }, 250);
+      });
+
+      // Header Search Bar Input
+      const navSearchInput = document.getElementById('nav-search-input');
+      navSearchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          currentState.search = e.target.value;
+          currentState.page = 1;
+          showSection('home');
+          scrollToId('all-games-section');
+          loadAllGames();
+        }
+      });
+
+      // Mobile Search Bar Input
+      const mobileSearchInput = document.getElementById('mobile-search-input');
+      mobileSearchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          currentState.search = e.target.value;
+          currentState.page = 1;
+          toggleMobileMenu();
+          showSection('home');
+          scrollToId('all-games-section');
+          loadAllGames();
+        }
+      });
+
+      // Filter Dropdowns
+      document.getElementById('filter-category').addEventListener('change', (e) => {
+        currentState.category = e.target.value;
+        currentState.page = 1;
+        loadAllGames();
+      });
+
+      document.getElementById('filter-platform').addEventListener('change', (e) => {
+        currentState.platform = e.target.value;
+        currentState.page = 1;
+        loadAllGames();
+      });
+
+      document.getElementById('filter-sort').addEventListener('change', (e) => {
+        currentState.sort = e.target.value;
+        currentState.page = 1;
+        loadAllGames();
+      });
+
+      // Mobile Menu Toggle
+      document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+      // Close modal on click outside
+      document.getElementById('game-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'game-modal') closeModal();
+      });
+    }
+
+    function filterCategory(catName) {
+      currentState.category = catName;
+      currentState.page = 1;
+      document.getElementById('filter-category').value = catName;
+      showSection('home');
+      scrollToId('all-games-section');
+      loadAllGames();
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    function showSection(section) {
+      document.getElementById('view-home').classList.add('hidden');
+      document.getElementById('view-about').classList.add('hidden');
+      document.getElementById('view-contact').classList.add('hidden');
+
+      if (section === 'about') {
+        document.getElementById('view-about').classList.remove('hidden');
+      } else if (section === 'contact') {
+        document.getElementById('view-contact').classList.remove('hidden');
+      } else {
+        document.getElementById('view-home').classList.remove('hidden');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollToId(id) {
+      showSection('home');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      alert('Redirecting your message to MR. THARU BOY on WhatsApp...');
+      window.open('https://wa.me/94773089283?text=Hello%20MR.%20THARU%20BOY%2C%20I%20have%20a%20question%20regarding%20the%20Game%20Store.', '_blank');
+    }
+  </script>
+</body>
+</html>
